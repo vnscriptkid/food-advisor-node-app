@@ -1,0 +1,10 @@
+mixin pagination(page, pages, count)
+    if page > 1
+        div
+            a(href=`/stores/page/${page - 1}`) Prev
+    
+    p #{page} / #{pages} in total of #{count} stores
+
+    if page < pages
+        div
+            a(href=`/stores/page/${page + 1}`) Next

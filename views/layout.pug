@@ -1,0 +1,46 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        base(href="/")
+        link(rel="stylesheet", type="text/css", href="css/style.css")
+        title= `${title} | ${h.siteName}`
+    body
+        h1 This is the layout site        
+
+        nav
+            ul  
+                li
+                    a(href="/stores") Stores
+                    a(href="/tags") Tags
+                    if locals.user
+                        img(src=(locals.user.gravatar), alt="Gravatar")       
+                        a(href="/add") Add Store
+                        a(href="/account") Edit Account
+                        a(href="/logout") Logout
+                    else
+                        a(href="/login") Login
+                        a(href="/register") Register
+
+                    if locals.user
+                        pre= JSON.stringify(locals.user, null, 2)
+
+        - categories = Object.keys(locals.flashes)    
+        if categories.length > 0
+            each cat in categories
+                each mes in locals.flashes[cat]
+                    div!= mes
+
+        else
+            div Nothing
+
+        block hello
+
+        block content
+
+        block scripts
+            script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAP_KEY}&libraries=places`)
+            script(src="/dist/bundle.js")
+

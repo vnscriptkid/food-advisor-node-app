@@ -1,0 +1,6 @@
+extends layout
+
+block content
+    h2 #{tag || 'Tags'}
+    pre= JSON.stringify(tags, null, 2)
+    pre= JSON.stringify(stores, null, 2)

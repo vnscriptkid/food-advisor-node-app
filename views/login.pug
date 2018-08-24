@@ -1,0 +1,17 @@
+extends layout
+
+include mixins/_forgotForm
+
+block content
+    h2 Login Form
+    form(action="/login" method="POST")
+        div
+            label(for="email") Email
+            input(type="email" name="email" id="email")
+        div
+            label(for="password") Password
+            input(type="password" name="password" id="password")
+        button LOGIN
+
+    +forgotForm()
+

@@ -1,0 +1,7 @@
+mixin reviewTemplate(review)
+    h3= review.author.name
+    h6= h.moment(review.created).fromNow()
+    img(src=(review.author.gravatar) , alt="Avatar")
+    p= review.text
+    h5 Rated 
+        span= review.rating + ' / 5'

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h2 Top Stores
+    table
+        tr
+            th Image
+            th Store Name
+            th Num of Reviews
+            th Average            
+        
+        each store in stores
+            tr
+                td
+                    a(href=`/store/${store.slug}`)
+                        img(src=`/uploads/${store.photo}`, alt="", height="200", width="200")            
+                td= store.name
+                td= store.reviews.length
+                td= store.averageRating

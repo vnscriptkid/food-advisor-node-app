@@ -1,0 +1,7 @@
+mixin forgotForm()
+    h2 Forgot Password Form
+    form(action="/account/forgot", method="post")
+        div
+            label(for="email-forgot") Email
+            input(type="email", name="email", id="email-forgot")
+        button Reset Password

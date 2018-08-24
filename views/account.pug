@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    form(action="/account", method="post")
+        div
+            label(for="name") Name
+            input(type="text", name="name", id="name" value=(user && user.name))
+        div
+            label(for="email") Email
+            input(type="email", name="email", id="email" value=(user && user.email))
+        button Edit

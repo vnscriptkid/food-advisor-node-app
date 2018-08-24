@@ -1,0 +1,31 @@
+extends layout
+
+include mixins/_pagination
+
+block content
+    div(class="search")
+        h3 Search for stores here
+        input(type="text" class="search__input")
+        div(class="search__results")
+
+    h1 Here are all stores
+    if user 
+        h2 Number of hearts 
+            span.heartTotal= user.hearts.length
+    each store in stores
+        div
+            ul
+                li
+                    if user && store.author.equals(user._id)
+                        a(href=`/stores/${store._id}/edit`) Edit
+                    if user
+                        form(action=`/api/stores/${store._id}/heart`, method="post" class=`heart`)
+                            button(class=`${user.hearts.indexOf(store.id) !== -1 ? 'heart--active' : 'nothing'}`) Like
+                    p= store.name
+                    p= store.description.split(' ').slice(0, 25).join(' ')
+                    a(href=`/store/${store.slug}`) More Info
+
+    h4 Pagination
+        +pagination(page, pages, count)
+                    
+    

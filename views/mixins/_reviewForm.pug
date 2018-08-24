@@ -1,0 +1,10 @@
+mixin myReviewForm(store)
+    h2 Make a review now!
+    form(action=`/reviews/${store.id}/`, method="post")
+        div
+            label(for="textContent") Leave some words!
+            textarea(name="text", cols="30", rows="10", id="textContent")
+        div
+            label(for="rating") Rating from 1 to 5
+            input(type="number", name="rating", min="1", max="5")
+        button Send
